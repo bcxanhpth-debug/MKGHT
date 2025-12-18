@@ -56,7 +56,9 @@
             Check: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
             X: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
             ScrollText: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg>,
-            Info: () => <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Info: () => <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>,
+            ProfileImage:() =><img src="/AVA.png" alt="User Profile" width={64} height={64} />
+            
         };
 
         const App = () => {
@@ -134,9 +136,9 @@
                 const weekDays = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
 
                 weekDays.forEach(day => days.push(
-                    <div key={`header-${day}`} className="font-bold text-stone-500 text-center py-3 text-xs uppercase tracking-widest">{day}</div>
+                    <div key={`header-${day}`} className="font-bold text-cyan-700 text-center py-3 text-xs uppercase tracking-widest">{day}</div>
                 ));
-                for (let i = 0; i < firstDay; i++) days.push(<div key={`empty-${i}`} className="h-24 bg-stone-50/30"></div>);
+                for (let i = 0; i < firstDay; i++) days.push(<div key={`empty-${i}`} className="h-24 bg-cyan-50/30"></div>);
 
                 for (let day = 1; day <= daysInMonth; day++) {
                     const dateKey = formatDateKey(year, month, day);
@@ -144,8 +146,8 @@
                     const isOccupied = !!occupant;
                     days.push(
                         <div key={dateKey} onClick={() => handleDateClick(day, isOccupied, occupant)}
-                            className={`h-24 p-2 relative cursor-pointer transition-all duration-300 border border-stone-100 ${isOccupied ? 'bg-red-50 hover:bg-red-100 group' : 'bg-white hover:bg-emerald-50 hover:-translate-y-1 hover:shadow-lg z-10'}`}>
-                            <span className={`text-xl  font-bold block mb-1 ${isOccupied ? 'text-red-900 opacity-70' : 'text-stone-700'}`}>{day}</span>
+                            className={`h-24 p-2 relative cursor-pointer transition-all duration-300 border border-gray-100 ${isOccupied ? 'bg-red-50 hover:bg-red-100 group' : 'bg-white hover:bg-emerald-50 hover:-translate-y-1 hover:shadow-lg z-10'}`}>
+                            <span className={`text-xl  font-bold block mb-1 ${isOccupied ? 'text-red-900 opacity-70' : 'text-cyan-700'}`}>{day}</span>
                             {isOccupied ? (
                                 <div className="flex flex-col h-full justify-between pb-6">
                                     <span className="text-[10px] font-bold text-red-800 uppercase tracking-wide">Đã kín</span>
@@ -164,24 +166,24 @@
             };
 
             const monthNames = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
-
+            
             return (
                 <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
                     {/* --- POPUP QUY ĐỊNH (MODAL) --- */}
                     {showRules && (
-                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm transition-opacity duration-300">
-                            <div className="bg-white w-full max-w-2xl max-h-[85vh] rounded-xl shadow-2xl flex flex-col overflow-hidden animate-fade-in-up border border-stone-200">
-                                <div className="bg-stone-800 p-6 flex items-center justify-between shrink-0">
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-cyan-900/60 backdrop-blur-sm transition-opacity duration-300">
+                            <div className="bg-white w-full max-w-2xl max-h-[85vh] rounded-xl shadow-2xl flex flex-col overflow-hidden animate-fade-in-up border border-gray-200">
+                                <div className="bg-cyan-800 p-6 flex items-center justify-between shrink-0">
                                     <div className="flex items-center space-x-3">
                                         <div className="text-amber-100"><Icons.ScrollText /></div>
                                         <h2 className="text-xl font-serif font-bold text-white tracking-wide">QUY ĐỊNH MƯỢN KHÔNG GIAN</h2>
                                     </div>
                                 </div>
-                                <div className="p-6 overflow-y-auto custom-scrollbar text-stone-700 space-y-6 text-sm leading-relaxed">
-                                    <div className="text-center font-bold text-base border-b border-stone-200 pb-2 mb-4">QUY ĐỊNH MƯỢN KHÔNG GIAN HỌC THUẬT</div>
+                                <div className="p-6 overflow-y-auto custom-scrollbar text-cyan-700 space-y-6 text-sm leading-relaxed">
+                                    <div className="text-center font-bold text-base border-b border-gray-200 pb-2 mb-4">QUY ĐỊNH MƯỢN KHÔNG GIAN HỌC THUẬT</div>
                                     <section>
-                                        <h3 className="font-bold text-stone-900 mb-2 uppercase text-xs tracking-wider">I. Thông tin:</h3>
-                                        <ul className="list-disc pl-5 space-y-1 marker:text-stone-400">
+                                        <h3 className="font-bold text-cyan-900 mb-2 uppercase text-xs tracking-wider">I. Thông tin:</h3>
+                                        <ul className="list-disc pl-5 space-y-1 marker:text-gray-400">
                                             <li>Không Gian Học Thuật bên cạnh được dùng cho sinh viên sử dụng để học tập, thảo luận theo nhóm thì còn được dùng như một không gian riêng dành cho các CLB – Đội – Nhóm các cấp.</li>
                                             <li>
                                                 Khung giờ mượn/trả: 
@@ -195,8 +197,8 @@
                                         </ul>
                                     </section>
                                     <section>
-                                        <h3 className="font-bold text-stone-900 mb-2 uppercase text-xs tracking-wider">II. Quy định:</h3>
-                                        <ul className="list-disc pl-5 space-y-1 marker:text-stone-400">
+                                        <h3 className="font-bold text-cyan-900 mb-2 uppercase text-xs tracking-wider">II. Quy định:</h3>
+                                        <ul className="list-disc pl-5 space-y-1 marker:text-gray-400">
                                             <li>Đăng ký trước ít nhất <span className="font-semibold">3 ngày</span>.</li>
                                             <li>Nếu xong sớm hơn dự kiến, báo trước 30 phút.</li>
                                             <li>Trả lại hiện trạng bàn ghế sau khi sử dụng.</li>
@@ -205,17 +207,17 @@
                                         </ul>
                                     </section>
                                     <section>
-                                        <h3 className="font-bold text-stone-900 mb-2 uppercase text-xs tracking-wider">III. Xử lý vi phạm:</h3>
-                                        <ul className="list-disc pl-5 space-y-1 marker:text-stone-400">
+                                        <h3 className="font-bold text-cyan-900 mb-2 uppercase text-xs tracking-wider">III. Xử lý vi phạm:</h3>
+                                        <ul className="list-disc pl-5 space-y-1 marker:text-gray-400">
                                             <li><span className="font-semibold">Lần 1:</span> Nhắc nhở.</li>
                                             <li><span className="font-semibold">Lần 2:</span> Cấm mượn 2 tháng.</li>
                                             <li><span className="font-semibold">Lần 3:</span> Cấm mượn trong học kỳ.</li>
                                         </ul>
                                     </section>
-                                    <div className="text-right pt-4 text-stone-500 italic ">Trưởng ban Hậu Cần – Nhân Sự<br/><span className="font-bold not-italic text-stone-800">Phạm Phúc An</span></div>
+                                    <div className="text-right pt-4 text-cyan-700 italic ">Trưởng ban Hậu Cần – Nhân Sự<br/><span className="font-bold not-italic text-cyan-800">Phạm Phúc An</span></div>
                                 </div>
-                                <div className="p-4 bg-stone-50 border-t border-stone-200 flex justify-center shrink-0">
-                                    <button onClick={() => setShowRules(false)} className="bg-stone-800 hover:bg-stone-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95 flex items-center space-x-2">
+                                <div className="p-4 bg-cyan-50 border-t border-gray-200 flex justify-center shrink-0">
+                                    <button onClick={() => setShowRules(false)} className="bg-cyan-800 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95 flex items-center space-x-2">
                                         <div className="text-white"><Icons.Check /></div><span>TÔI ĐỒNG Ý</span>
                                     </button>
                                 </div>
@@ -226,33 +228,35 @@
                     {/* --- GIAO DIỆN CHÍNH (LỊCH) --- */}
                     <div className={`max-w-5xl mx-auto transition-filter duration-300 ${showRules ? 'blur-sm' : ''}`}>
                         <div className="text-center mb-12 space-y-4">
-                            <div className="inline-flex items-center justify-center p-4 bg-stone-800 rounded-full shadow-2xl mb-4"><div className="text-stone-50"><Icons.BookOpen /></div></div>
-                            <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 tracking-tight">KHÔNG GIAN HỌC THUẬT</h1>
-                            <p className="text-xl text-stone-500 font-serif italic">"Nơi thời gian ngừng lại bên trang sách"</p>
-                            <button onClick={() => setShowRules(true)} className="text-xs text-stone-400 hover:text-stone-600 underline flex items-center justify-center w-full mt-2"><span className="mr-1"><Icons.Info /></span> Xem lại quy định</button>
+                            <div className="inline-flex items-center justify-center p-0.25 bg-cyan-800 rounded-full shadow-2xl mb-4"><div className="text-cyan-50">
+                               <Icons.ProfileImage/>
+                                </div></div>
+                            <h1 className="text-5xl md:text-6xl font-serif font-bold text-cyan-900 tracking-tight">KHÔNG GIAN HỌC THUẬT</h1>
+                            <p className="text-xl text-cyan-700 font-serif italic">"Nơi thời gian ngừng lại bên trang sách"</p>
+                            <button onClick={() => setShowRules(true)} className="text-xs text-gray-400 hover:text-cyan-700 underline flex items-center justify-center w-full mt-2"><span className="mr-1"><Icons.Info /></span> Xem lại quy định</button>
                         </div>
 
-                        <div className="bg-white rounded-lg shadow-xl overflow-hidden border border-stone-200">
-                            <div className="bg-stone-900 p-8 text-stone-50 flex justify-between items-center">
-                                <button onClick={handlePrevMonth} className="p-3 hover:bg-stone-700 rounded-full transition-all active:scale-95"><Icons.ChevronLeft /></button>
+                        <div className="bg-white rounded-lg shadow-xl overflow-hidden border border-gray-200">
+                            <div className="bg-cyan-900 p-8 text-cyan-50 flex justify-between items-center">
+                                <button onClick={handlePrevMonth} className="p-3 hover:bg-cyan-700 rounded-full transition-all active:scale-95"><Icons.ChevronLeft /></button>
                                 <div className="flex flex-col items-center">
                                     <span className="text-3xl font-serif font-medium tracking-wide">{monthNames[currentDate.getMonth()]}</span>
-                                    <span className="text-stone-400 font-light mt-1">{currentDate.getFullYear()}</span>
+                                    <span className="text-gray-400 font-light mt-1">{currentDate.getFullYear()}</span>
                                 </div>
-                                <button onClick={handleNextMonth} className="p-3 hover:bg-stone-700 rounded-full transition-all active:scale-95"><Icons.ChevronRight /></button>
+                                <button onClick={handleNextMonth} className="p-3 hover:bg-cyan-700 rounded-full transition-all active:scale-95"><Icons.ChevronRight /></button>
                             </div>
 
-                            {loading && <div className="p-12 text-center text-stone-400 italic animate-pulse">Đang cập nhật dữ liệu...</div>}
+                            {loading && <div className="p-12 text-center text-gray-400 italic animate-pulse">Đang cập nhật dữ liệu...</div>}
                             {error && <div className="bg-red-50 p-4 text-center text-red-600 text-sm border-b border-red-100">{error}</div>}
                             
-                            {!loading && <div className="grid grid-cols-7 bg-stone-100 gap-px border-b border-stone-200">{renderCalendar()}</div>}
+                            {!loading && <div className="grid grid-cols-7 bg-gray-100 gap-px border-b border-gray-200">{renderCalendar()}</div>}
                             
-                            <div className="p-6 bg-stone-50 border-t border-stone-100 flex justify-center space-x-12 text-sm text-stone-600 font-medium">
-                                <div className="flex items-center"><div className="w-3 h-3 bg-white border border-stone-300 mr-3 shadow-sm"></div><span>Còn trống</span></div>
+                            <div className="p-6 bg-cyan-50 border-t border-gray-100 flex justify-center space-x-12 text-sm text-cyan-700 font-medium">
+                                <div className="flex items-center"><div className="w-3 h-3 bg-white border border-cyan-300 mr-3 shadow-sm"></div><span>Còn trống</span></div>
                                 <div className="flex items-center"><div className="w-3 h-3 bg-red-50 border border-red-200 mr-3 shadow-sm"></div><span>Đã được mượn</span></div>
                             </div>
                         </div>
-                        <div className="text-center mt-12 text-stone-400 text-xs tracking-widest uppercase">© {new Date().getFullYear()} CLB BỒ CÂU XANH - TỦ SÁCH TRƯỜNG Y</div>
+                        <div className="text-center mt-12 text-gray-400 text-xs tracking-widest uppercase">© {new Date().getFullYear()} CLB BỒ CÂU XANH - TỦ SÁCH TRƯỜNG Y</div>
                     </div>
                 </div>
             );
